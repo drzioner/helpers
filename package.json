@@ -13,7 +13,7 @@
     "test": "jest",
     "build": "npm run clean && tsc",
     "prepare": "npm run build",
-    "publish": "npm publish",
+    "publish": "npm run build && npm publish",
     "bundle": "yarn build && yarn test && yarn pack"
   },
   "keywords": [
