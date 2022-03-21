@@ -1,7 +1,8 @@
 /** @packages */
 import * as crypto from 'crypto';
 
-export const generateUID = (length = 18): string => {
+export const generateUID = (): string => {
+  const length = 18;
   const hash = crypto.randomBytes(length);
   const encoding: BufferEncoding = 'hex';
   const hashEncoding = hash.toString(encoding);
