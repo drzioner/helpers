@@ -2,6 +2,14 @@
 
 ### Collection of various helpers for javascript and typescript development
 
+## Installation
+
+```bash
+npm i @drzioner/helpers
+# or
+yarn add @drzioner/helpers
+```
+
 ## Database helpers
 
 Generate UID
