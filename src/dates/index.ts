@@ -1,2 +1,4 @@
-export * from './difference-between-two-dates';
-export * from './format-a-date';
+export * from './difference-dates';
+export * from './format-dates';
+export * from './manipulate-dates';
+export * from './get-dates';
