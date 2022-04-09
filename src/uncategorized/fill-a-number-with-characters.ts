@@ -1,4 +1,4 @@
-export const fillInANumberWithACharacter = (
+export const fillANumberWithCharacters = (
   number: number,
   lengthCharacters = 4,
   fill = '0',
