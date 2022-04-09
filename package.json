@@ -10,6 +10,8 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "clean": "rimraf dist",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"{src,dist}/**/*.ts\" --fix",
     "test": "jest",
     "build": "npm run clean && tsc",
     "prepare": "npm run build",
@@ -18,13 +20,14 @@
   },
   "keywords": [
     "helpers",
-    "typescript"
+    "typescript",
+    "database",
+    "uuid",
+    "date",
+    "datetime"
   ],
   "author": "drzioner <drzioner@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "dayjs": "^1.11.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
@@ -50,6 +53,7 @@
   ],
   "husky": {
     "hooks": {
+      "pre-commit": "npm run format && npm run lint",
       "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS"
     }
   },
