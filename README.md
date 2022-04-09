@@ -10,9 +10,9 @@ npm i @drzioner/helpers
 yarn add @drzioner/helpers
 ```
 
-## Database helpers
+## [Database helpers](./docs/database.md)
 
-Generate UID
+Example
 
 ```bash
 import { generateUID } from '@drzioner/helpers';
@@ -24,54 +24,30 @@ console.log('uid', uid);
 # uid 16478271-33403a97-d811b91d-345c8543-334d9a74-5044d5a47
 ```
 
-## Date helpers
+## [Date helpers](./docs/dates.md)
 
-Difference between two dates
+Example
 ```bash
-import { differenceBetweenTwoDates } from '@drzioner/helpers';
+import { manipulateDate } from '@drzioner/helpers';
 
-const diff = differenceBetweenTwoDates('2021-03-12', '2021-03-10');
+const date = manipulateDate({ days: -1, months: 1 }, '2022-04-09');
 
-console.log('diff', diff);
+console.log('date', date);
 
-# diff -172800000
+# date 2022-05-08T00:00:00.000Z
 
-const diff = differenceBetweenTwoDates('2021-03-10', '2021-03-12', 'days');
+import { dateDifference } from '@drzioner/helpers';
 
-console.log('diff', diff);
-
-# diff 2
-```
-Difference between today and another date
-```bash
-import { differenceBetweenTwoDates } from '@drzioner/helpers';
-
-const diff = differenceBetweenTodayAndAnotherDate('2021-03-12');
+const diff = dateDifference('2021-04-09', '2021-04-01', 'days');
 
 console.log('diff', diff);
 
-# diff -32227200000
-
-const diff = differenceBetweenTodayAndAnotherDate('2022-03-25', 'days');
-
-console.log('diff', diff);
-
-# diff 5
+# diff 8
 ```
 
-Format a date
-```bash
-import { formatADate, FormatDate } from '@drzioner/helpers';
+## [File helpers](./docs/files.md)
 
-const dateFormat = formatADate(new Date(), FormatDate.DD_MM_YYYY);
-
-console.log('dateFormat', dateFormat);
-
-# dateFormat 20-03-2022
-```
-
-## File helpers
-
+Example
 ```bash
 import { nameFileRandom } from '@drzioner/helpers';
 
@@ -80,59 +56,9 @@ const nameRandom = nameFileRandom('file.jpg');
 console.log('nameRandom', nameRandom);
 
 # nameRandom 1647828249206a64bdc57f939d47eae0be8dfab854314b8b5d6fc01b6449acd8787c06075e4ec.jpg
-
-const nameRandom = nameFileRandom('file.jpg', 8, '.png');
-
-console.log('nameRandom', nameRandom);
-
-# nameRandom 164782829087589b6a0c9d92d12b2.png
 ```
 
-## Mathematics helpers
-
-Sum
-```bash
-import { sum } from '@drzioner/helpers';
-
-const result = sum(1, 2);
-
-console.log('result', result);
-
-# result 3
-```
-
-Subtraction
-```bash
-import { subtraction } from '@drzioner/helpers';
-
-const result = subtraction(1, 2);
-
-console.log('result', result);
-
-# result -1
-```
-
-Multiplication
-```bash
-import { multiplication } from '@drzioner/helpers';
-
-const result = multiplication(1, 2);
-
-console.log('result', result);
-
-# result 2
-```
-
-Division
-```bash
-import { division } from '@drzioner/helpers';
-
-const result = division(2, 1);
-
-console.log('result', result);
-
-# result 2
-```
+## [Mathematics helpers](./docs/mathematics.md)
 
 Arithmetic operations
 ```bash
@@ -145,21 +71,15 @@ console.log('result', result);
 # result 10
 ```
 
-## Uncategorized helpers
+## [Uncategorized helpers](./docs/uncategorized.md)
 
 Fill in a number with a character
 ```bash
-import { fillInANumberWithACharacter } from '@drzioner/helpers';
+import { fillANumberWithCharacters } from '@drzioner/helpers';
 
-const number = fillInANumberWithACharacter(1);
+const number = fillANumberWithCharacters(1);
 
 console.log('number', number);
 
 # number 0001
-
-const number = fillInANumberWithACharacter(1, 5, 'z');
-
-console.log('number', number);
-
-# number zzzz1
 ```
