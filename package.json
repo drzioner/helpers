@@ -16,7 +16,8 @@
     "build": "npm run clean && tsc",
     "prepare": "npm run build",
     "publish": "npm run build && npm publish",
-    "bundle": "yarn build && yarn test && yarn pack"
+    "bundle": "yarn build && yarn test && yarn pack",
+    "release": "standard-version -a"
   },
   "keywords": [
     "helpers",
@@ -43,6 +44,7 @@
     "jest": "^27.5.1",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "standard-version": "^9.3.2",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.7.0",
     "tslib": "^2.3.1",
@@ -53,8 +55,9 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format && npm run lint",
-      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS"
+      "pre-commit": "npm run format && npm run lint HUSKY_GIT_PARAMS",
+      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm run release HUSKY_GIT_PARAMS"
     }
   },
   "repository": {
