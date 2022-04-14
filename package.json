@@ -17,7 +17,7 @@
     "prepare": "npm run build",
     "publish": "npm run build && npm publish",
     "bundle": "yarn build && yarn test && yarn pack",
-    "release": "standard-version"
+    "release": "standard-version -a"
   },
   "keywords": [
     "helpers",
