@@ -1,5 +1,5 @@
 /** @application */
-import { fillANumberWithCharacters } from '../uncategorized/fill-a-number-with-characters';
+import { fillANumberWithCharacters } from '../uncategorized';
 
 /** @module */
 import { getDate } from './get-dates';
@@ -185,16 +185,17 @@ const formatSeconds = (date: Date): string =>
 const formatMilliseconds = (date: Date): string =>
   date.getMilliseconds().toString();
 
-const formatYearUTC = (date: Date): string => date.getUTCFullYear().toString();
-const formatMonthUTC = (date: Date): string =>
+export const formatYearUTC = (date: Date): string =>
+  date.getUTCFullYear().toString();
+export const formatMonthUTC = (date: Date): string =>
   fillANumberWithCharacters(date.getUTCMonth() + 1, 2);
-const formatDayUTC = (date: Date): string =>
+export const formatDayUTC = (date: Date): string =>
   fillANumberWithCharacters(date.getUTCDate(), 2);
-const formatHoursUTC = (date: Date): string =>
+export const formatHoursUTC = (date: Date): string =>
   fillANumberWithCharacters(date.getUTCHours(), 2);
-const formatMinutesUTC = (date: Date): string =>
+export const formatMinutesUTC = (date: Date): string =>
   fillANumberWithCharacters(date.getUTCMinutes(), 2);
-const formatSecondsUTC = (date: Date): string =>
+export const formatSecondsUTC = (date: Date): string =>
   fillANumberWithCharacters(date.getUTCSeconds(), 2);
-const formatMillisecondsUTC = (date: Date): string =>
+export const formatMillisecondsUTC = (date: Date): string =>
   date.getUTCMilliseconds().toString();

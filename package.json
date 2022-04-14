@@ -1,6 +1,6 @@
 {
   "name": "@drzioner/helpers",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "Collection of various helpers for javascript and typescript development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
