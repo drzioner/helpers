@@ -1,6 +1,6 @@
 {
   "name": "@drzioner/helpers",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Collection of various helpers for javascript and typescript development",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     "prepare": "npm run build",
     "publish": "npm run build && npm publish",
     "bundle": "yarn build && yarn test && yarn pack",
-    "release": "standard-version -a"
+    "release": "standard-version"
   },
   "keywords": [
     "helpers",
