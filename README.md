@@ -62,9 +62,8 @@ console.log('nameRandom', nameRandom);
 
 Arithmetic operations
 ```bash
-import { ArithmeticOperations, arithmeticOperations } from '@drzioner/helpers';
-
-const result = arithmeticOperations([2, 1, 4, 3], ArithmeticOperations.SUM);
+import { ArithmeticOperations } from '@drzioner/helpers';
+const result = arithmeticOperations([2, 1, 4, 3], 'sum');
 
 console.log('result', result);
 
