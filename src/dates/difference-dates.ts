@@ -1,5 +1,5 @@
 /** @module */
-import { getDate, getMonth } from './get-dates';
+import { getDate } from './get-dates';
 import { DateType } from './manipulate-dates';
 
 export declare type DateUnit =
@@ -12,11 +12,10 @@ export declare type DateUnit =
   | 'years';
 
 const MILLISECOND = 1000;
-const SECOND = 1 * MILLISECOND;
+const SECOND = MILLISECOND;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
-const WEEK = 7 * DAY;
 const MONTH = 30 * DAY;
 const YEAR = 12 * MONTH;
 
@@ -41,7 +40,10 @@ const getValueUnit = (unit: DateUnit): number => {
   if ('years' === unit) return YEAR;
 };
 
-export const differenceTodayAndAnotherDate = (date: DateType, unit?: DateUnit): number => {
+export const differenceTodayAndAnotherDate = (
+  date: DateType,
+  unit?: DateUnit,
+): number => {
   const dateParse = getDate(date).getTime();
   const today = getDate().getTime();
   const diff = Math.abs(today - dateParse);
