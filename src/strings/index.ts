@@ -1,2 +1,2 @@
-export { fillANumberWithCharacters, padNumber } from "./pad";
-export type { PadNumberOptions } from "./types";
+export { fillANumberWithCharacters, padNumber } from "./pad.js";
+export type { PadNumberOptions } from "./types.js";

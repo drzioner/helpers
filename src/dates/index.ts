@@ -1,4 +1,4 @@
-export { dateDifference, differenceTodayAndAnotherDate } from "./difference";
+export { dateDifference, differenceTodayAndAnotherDate } from "./difference.js";
 export {
   formatDate,
   formatDayUTC,
@@ -11,7 +11,7 @@ export {
   getDateFormatted,
   getFormatCustom,
   getTimeFormatted,
-} from "./formatters";
+} from "./formatters.js";
 export {
   getDate,
   getDay,
@@ -29,7 +29,7 @@ export {
   getYear,
   getYearUTC,
   parseDate,
-} from "./getters";
+} from "./getters.js";
 export {
   manipulateDate,
   manipulateDays,
@@ -46,6 +46,6 @@ export {
   manipulateSecondsUTC,
   manipulateYears,
   manipulateYearsUTC,
-} from "./manipulators";
-export type { DateOptions, DateType, DateUnit, FormatDateType, optionsDate } from "./types";
-export { CustomFormat, FormatDate, FormatTime } from "./types";
+} from "./manipulators.js";
+export type { DateOptions, DateType, DateUnit, FormatDateType, optionsDate } from "./types.js";
+export { CustomFormat, FormatDate, FormatTime } from "./types.js";

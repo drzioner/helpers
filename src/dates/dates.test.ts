@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 // --- Difference ---
-import { dateDifference, differenceTodayAndAnotherDate } from "./difference";
+import { dateDifference, differenceTodayAndAnotherDate } from "./difference.js";
 // --- Formatters ---
 import {
   formatDate,
@@ -14,7 +14,7 @@ import {
   getDateFormatted,
   getFormatCustom,
   getTimeFormatted,
-} from "./formatters";
+} from "./formatters.js";
 // --- Getters ---
 import {
   getDate,
@@ -33,7 +33,7 @@ import {
   getYear,
   getYearUTC,
   parseDate,
-} from "./getters";
+} from "./getters.js";
 // --- Manipulators ---
 import {
   manipulateDate,
@@ -51,10 +51,10 @@ import {
   manipulateSecondsUTC,
   manipulateYears,
   manipulateYearsUTC,
-} from "./manipulators";
-import type { DateOptions, FormatDateType } from "./types";
+} from "./manipulators.js";
+import type { DateOptions, FormatDateType } from "./types.js";
 // --- Types ---
-import { CustomFormat, FormatDate, FormatTime } from "./types";
+import { CustomFormat, FormatDate, FormatTime } from "./types.js";
 
 // ============================================================================
 // Fixed reference dates for deterministic tests

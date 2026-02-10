@@ -1,2 +1,2 @@
-export { createFile } from "./create-file";
-export { nameFileRandom, randomFileName } from "./random-file-name";
+export { createFile } from "./create-file.js";
+export { nameFileRandom, randomFileName } from "./random-file-name.js";

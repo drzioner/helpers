@@ -1,4 +1,4 @@
-import type { ArithmeticOperationType } from "./types";
+import type { ArithmeticOperationType } from "./types.js";
 
 /**
  * Adds two numbers.

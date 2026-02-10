@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fillANumberWithCharacters, padNumber } from "./pad";
+import { fillANumberWithCharacters, padNumber } from "./pad.js";
 
 describe("padNumber", () => {
   it("should pad 1 to '0001' with default parameters", () => {

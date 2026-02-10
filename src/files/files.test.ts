@@ -2,8 +2,8 @@ import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { createFile } from "./create-file";
-import { nameFileRandom, randomFileName } from "./random-file-name";
+import { createFile } from "./create-file.js";
+import { nameFileRandom, randomFileName } from "./random-file-name.js";
 
 describe("randomFileName", () => {
   it("should return a string", () => {

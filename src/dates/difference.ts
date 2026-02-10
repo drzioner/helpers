@@ -1,5 +1,5 @@
-import { getDate } from "./getters";
-import type { DateType, DateUnit } from "./types";
+import { getDate } from "./getters.js";
+import type { DateType, DateUnit } from "./types.js";
 
 const MILLISECOND = 1;
 const SECOND = 1000;

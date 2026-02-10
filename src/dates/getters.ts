@@ -1,4 +1,4 @@
-import type { DateType } from "./types";
+import type { DateType } from "./types.js";
 
 /**
  * Parses a date input into a Date object. Returns current date if no input.

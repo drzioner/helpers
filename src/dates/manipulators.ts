@@ -1,5 +1,5 @@
-import { getDate } from "./getters";
-import type { DateOptions, DateType } from "./types";
+import { getDate } from "./getters.js";
+import type { DateOptions, DateType } from "./types.js";
 
 // --- Factory for date manipulators ---
 

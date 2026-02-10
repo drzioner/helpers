@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { arithmeticOperations, division, multiplication, subtraction, sum } from "./operations";
-import type { ArithmeticOperationType } from "./types";
-import { ArithmeticOperations } from "./types";
+import { arithmeticOperations, division, multiplication, subtraction, sum } from "./operations.js";
+import type { ArithmeticOperationType } from "./types.js";
+import { ArithmeticOperations } from "./types.js";
 
 describe("sum", () => {
   it("should add two positive numbers", () => {

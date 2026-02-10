@@ -1,1 +1,1 @@
-export { generateUID } from "./generate-uid";
+export { generateUID } from "./generate-uid.js";

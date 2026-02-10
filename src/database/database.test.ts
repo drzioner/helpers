@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { generateUID } from "./generate-uid";
+import { generateUID } from "./generate-uid.js";
 
 describe("generateUID", () => {
   it("should return a string", () => {

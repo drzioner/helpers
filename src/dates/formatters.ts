@@ -1,7 +1,7 @@
-import { padNumber } from "../strings/pad";
-import { getDate } from "./getters";
-import type { DateType, FormatDateType } from "./types";
-import { type CustomFormat, FormatDate, FormatTime } from "./types";
+import { padNumber } from "../strings/pad.js";
+import { getDate } from "./getters.js";
+import type { DateType, FormatDateType } from "./types.js";
+import { type CustomFormat, FormatDate, FormatTime } from "./types.js";
 
 // --- Internal format helpers ---
 
