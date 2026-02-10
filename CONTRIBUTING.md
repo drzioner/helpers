@@ -137,6 +137,41 @@ export const fillANumberWithCharacters = padNumber;
 4. Add documentation in `docs/your-module.md`
 5. Update `README.md` with a usage example
 
+## Release Process
+
+Releases are fully automated via [Changesets](https://github.com/changesets/changesets), GitHub Actions, and [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC). No long-lived npm tokens are needed.
+
+### How it works
+
+1. **Add a changeset** -- when your PR includes user-facing changes, run `pnpm changeset` and commit the generated `.changeset/*.md` file.
+2. **Merge to `main`** -- CI creates (or updates) a "Version Packages" PR that bumps versions and updates `CHANGELOG.md`.
+3. **Merge the Version Packages PR** -- CI publishes to npm via OIDC and creates a GitHub Release automatically.
+
+### Authentication
+
+Publishing uses npm [Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) instead of stored tokens. GitHub Actions authenticates directly with the npm registry via OIDC -- no `NPM_TOKEN` secret required. The trusted publisher is configured per-package on npmjs.com linking the repository and workflow filename (`release.yml`).
+
+### Pre-releases (branch `next`)
+
+For testing unreleased changes before a stable release:
+
+```bash
+git checkout -b next main
+pnpm changeset pre enter next   # enable pre-release mode
+# ... make changes, add changesets, push ...
+# CI publishes 0.x.0-next.0, 0.x.0-next.1, etc.
+pnpm changeset pre exit         # when done, exit pre-release mode
+```
+
+### Dist-tags
+
+| Branch | npm dist-tag | Example version | Purpose |
+|--------|-------------|-----------------|---------|
+| `main` | `latest` | `0.4.0` | Stable releases |
+| `next` | `next` | `0.4.0-next.0` | Pre-releases for testing |
+
+Install a specific tag: `npm install @drzioner/helpers@next`
+
 ## Questions?
 
 Open an [issue](https://github.com/drzioner/helpers/issues) if something is unclear.

@@ -28,6 +28,9 @@ pnpm lint:fix          # Biome auto-fix
 pnpm typecheck         # tsc --noEmit
 pnpm build             # Build with tsup
 pnpm validate          # Build + publint + attw
+pnpm changeset         # Create a changeset for version bump
+pnpm version           # Apply changesets (bump versions + CHANGELOG)
+pnpm release           # Publish to npm (used by CI)
 ```
 
 ## Architecture
@@ -54,6 +57,13 @@ Each module has:
 - **Deprecated aliases** preserve backward compatibility (e.g., `nameFileRandom` -> `randomFileName`)
 - **Path traversal protection** in `createFile()` validates resolved paths
 - **No runtime dependencies** -- only Node.js builtins (`crypto`, `fs/promises`, `path`)
+
+## CI/CD
+
+- **CI (`ci.yml`):** Runs on push/PR to `main` -- lint, typecheck, test (Node 18/20/22), build, publint, attw
+- **Release (`release.yml`):** Runs on push to `main` and `next`. Uses `changesets/action` to open a "Version Packages" PR (when changesets exist). When no changesets remain, publishes to npm via OIDC trusted publishing (no token needed) and creates a GitHub Release
+- **Auth:** npm Trusted Publishing (OIDC) -- no `NPM_TOKEN` secret, GitHub Actions authenticates directly with the npm registry
+- **Pre-releases:** Push to `next` branch after `pnpm changeset pre enter next` publishes versions like `0.4.0-next.0` under the `next` dist-tag
 
 ## Rules
 
