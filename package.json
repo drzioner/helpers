@@ -37,6 +37,7 @@
     "validate": "pnpm build && publint && attw --pack",
     "prepublishOnly": "pnpm lint && pnpm test && pnpm validate",
     "changeset": "changeset",
+    "version": "changeset version",
     "release": "changeset publish",
     "prepare": "simple-git-hooks"
   },
