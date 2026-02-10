@@ -170,6 +170,13 @@ describe("createFile", () => {
     expect(JSON.parse(content)).toEqual({ key: "value", number: 42 });
   });
 
+  it("should create parent directories that do not exist", async () => {
+    tempDir = mkdtempSync(join(tmpdir(), "createfile-"));
+    await createFile("nested/deep/dir/file.txt", "nested content", tempDir);
+    const content = readFileSync(join(tempDir, "nested/deep/dir/file.txt"), "utf-8");
+    expect(content).toBe("nested content");
+  });
+
   it("should create a file with multiline content", async () => {
     tempDir = mkdtempSync(join(tmpdir(), "createfile-"));
     const multiline = "line1\nline2\nline3";

@@ -1,8 +1,9 @@
-import { writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 
 /**
  * Creates a file at the specified path with the given data.
+ * Automatically creates parent directories if they don't exist.
  * Validates paths to prevent directory traversal attacks.
  *
  * @param file - File name or relative path within the base directory
@@ -29,5 +30,6 @@ export const createFile = async (
     throw new Error(`Path traversal detected: "${file}" resolves outside the base directory`);
   }
 
+  await mkdir(dirname(resolvedFile), { recursive: true });
   await writeFile(resolvedFile, data);
 };
