@@ -125,6 +125,8 @@ export const range = (start: number, end: number, step = 1): number[] => {
 /**
  * Returns a new array with all falsy values removed.
  *
+ * @deprecated Use `array.filter(Boolean)` instead. Will be removed in v2.0.
+ *
  * @param array - The array to compact
  * @returns A new array without falsy values
  *
@@ -135,6 +137,8 @@ export const compact = <T>(array: readonly (T | Falsy)[]): T[] => array.filter(B
 
 /**
  * Returns the first element of an array.
+ *
+ * @deprecated Use `array.at(0)` (ES2022) or `array[0]` instead. Will be removed in v2.0.
  *
  * @param array - The source array
  * @returns The first element, or undefined if the array is empty
@@ -147,6 +151,8 @@ export const first = <T>(array: T[]): T | undefined => array[0];
 
 /**
  * Returns the last element of an array.
+ *
+ * @deprecated Use `array.at(-1)` (ES2022) or `array[array.length - 1]` instead. Will be removed in v2.0.
  *
  * @param array - The source array
  * @returns The last element, or undefined if the array is empty

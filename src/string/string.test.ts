@@ -185,6 +185,12 @@ describe("slugify", () => {
   it("should strip CJK characters", () => {
     expect(slugify("日本語")).toBe("");
   });
+
+  it("should collapse consecutive special characters and hyphens", () => {
+    expect(slugify("hello---world")).toBe("hello-world");
+    expect(slugify("hello___world")).toBe("hello-world");
+    expect(slugify("hello   world")).toBe("hello-world");
+  });
 });
 
 describe("truncate", () => {

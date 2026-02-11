@@ -30,17 +30,20 @@ describe("isString", () => {
 });
 
 describe("isNumber", () => {
-  it("should return true for numbers", () => {
+  it("should return true for finite numbers", () => {
     expect(isNumber(42)).toBe(true);
     expect(isNumber(0)).toBe(true);
     expect(isNumber(-1)).toBe(true);
     expect(isNumber(3.14)).toBe(true);
-    expect(isNumber(Infinity)).toBe(true);
-    expect(isNumber(-Infinity)).toBe(true);
   });
 
   it("should return false for NaN", () => {
     expect(isNumber(Number.NaN)).toBe(false);
+  });
+
+  it("should return false for Infinity", () => {
+    expect(isNumber(Infinity)).toBe(false);
+    expect(isNumber(-Infinity)).toBe(false);
   });
 
   it("should return false for non-numbers", () => {
@@ -244,5 +247,10 @@ describe("isEmpty", () => {
     expect(isEmpty(new Date())).toBe(false);
     expect(isEmpty(/a/)).toBe(false);
     expect(isEmpty(new Error("x"))).toBe(false);
+  });
+
+  it("should handle Object.create(null) correctly", () => {
+    expect(isEmpty(Object.create(null))).toBe(true);
+    expect(isEmpty(Object.assign(Object.create(null), { a: 1 }))).toBe(false);
   });
 });

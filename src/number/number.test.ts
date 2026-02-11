@@ -63,6 +63,16 @@ describe("round", () => {
     expect(round(5)).toBe(5);
     expect(round(5, 2)).toBe(5);
   });
+
+  it("should handle banker's rounding edge cases correctly", () => {
+    expect(round(1.255, 2)).toBe(1.26);
+    expect(round(1.005, 2)).toBe(1.01);
+    expect(round(2.675, 2)).toBe(2.68);
+  });
+
+  it("should handle large numbers", () => {
+    expect(round(1e10 + 0.5, 0)).toBe(1e10 + 1);
+  });
 });
 
 describe("randomInt", () => {
@@ -155,8 +165,8 @@ describe("average", () => {
     expect(average([1, 2, 3, 4])).toBe(2.5);
   });
 
-  it("should return 0 for empty array", () => {
-    expect(average([])).toBe(0);
+  it("should return NaN for empty array", () => {
+    expect(average([])).toBeNaN();
   });
 
   it("should handle single element", () => {

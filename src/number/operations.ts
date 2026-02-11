@@ -25,10 +25,10 @@ export const clamp = (value: number, min: number, max: number): number =>
  * round(1.2345, 2)  // 1.23
  * round(1.5)        // 2
  * round(1.005, 2)   // 1.01
+ * round(1.255, 2)   // 1.26
  */
 export const round = (value: number, precision = 0): number => {
-  const factor = 10 ** precision;
-  return Math.round((value + Number.EPSILON) * factor) / factor;
+  return Number(`${Math.round(Number(`${value}e${precision}`))}e-${precision}`);
 };
 
 /**
@@ -49,17 +49,18 @@ export const randomInt = (min: number, max: number): number => {
 };
 
 /**
- * Checks if a number is within a range [min, max).
+ * Checks if a number is within a half-open range `[min, max)`.
+ * The minimum is **inclusive** and the maximum is **exclusive** (matches lodash convention).
  *
  * @param value - The number to check
  * @param min - The minimum bound (inclusive)
- * @param max - The maximum bound (exclusive)
- * @returns `true` if the value is in [min, max)
+ * @param max - The maximum bound (**exclusive** — the value `max` itself returns `false`)
+ * @returns `true` if `min <= value < max`
  *
  * @example
  * inRange(5, 0, 10)   // true
- * inRange(10, 0, 10)  // false
- * inRange(0, 0, 10)   // true
+ * inRange(10, 0, 10)  // false  (max is exclusive)
+ * inRange(0, 0, 10)   // true   (min is inclusive)
  */
 export const inRange = (value: number, min: number, max: number): boolean =>
   value >= min && value < max;
@@ -82,17 +83,17 @@ export const sumAll = (values: number[]): number => {
 
 /**
  * Calculates the average (arithmetic mean) of an array of numbers.
- * Returns 0 for an empty array (not NaN) for practical usage.
+ * Returns `NaN` for an empty array (mathematically, the mean of no values is undefined).
  *
  * @param values - Array of numbers
- * @returns The average, or 0 for an empty array
+ * @returns The average, or `NaN` for an empty array
  *
  * @example
  * average([1, 2, 3, 4])  // 2.5
  * average([10])           // 10
- * average([])             // 0
+ * average([])             // NaN
  */
 export const average = (values: number[]): number => {
-  if (values.length === 0) return 0;
+  if (values.length === 0) return Number.NaN;
   return sumAll(values) / values.length;
 };

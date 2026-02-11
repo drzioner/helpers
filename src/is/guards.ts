@@ -13,20 +13,21 @@ import type { PlainObject } from "./types.js";
 export const isString = (value: unknown): value is string => typeof value === "string";
 
 /**
- * Checks if a value is a number (excludes NaN).
- * Returns true for numbers excluding NaN. Includes Infinity and -Infinity.
+ * Checks if a value is a finite number (excludes NaN, Infinity, -Infinity).
+ * Use `typeof value === "number"` for a broader check, or `value === Infinity` for Infinity checks.
  *
  * @param value - The value to check
- * @returns `true` if the value is a number and not NaN
+ * @returns `true` if the value is a finite number
  *
  * @example
  * isNumber(42)        // true
- * isNumber(Infinity)  // true
+ * isNumber(3.14)      // true
  * isNumber(NaN)       // false
+ * isNumber(Infinity)  // false
  * isNumber("42")      // false
  */
 export const isNumber = (value: unknown): value is number =>
-  typeof value === "number" && !Number.isNaN(value);
+  typeof value === "number" && Number.isFinite(value);
 
 /**
  * Checks if a value is a boolean.
@@ -156,7 +157,8 @@ export const isEmpty = (value: unknown): boolean => {
   if (typeof value === "object") {
     const proto = Object.getPrototypeOf(value);
     if (proto !== Object.prototype && proto !== null) return false;
-    return Object.keys(value).length === 0;
+    for (const _ in value as Record<string, unknown>) return false;
+    return true;
   }
   return false;
 };

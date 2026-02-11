@@ -1,3 +1,7 @@
+const CAMEL_BOUNDARY = /([a-z])([A-Z])/g;
+const ACRONYM_BOUNDARY = /([A-Z]+)([A-Z][a-z])/g;
+const SEPARATOR = /[\s\-_]+/;
+
 /**
  * Splits a string into words by spaces, hyphens, underscores,
  * and camelCase/PascalCase/ACRONYM boundaries.
@@ -12,9 +16,9 @@
  */
 export const splitWords = (str: string): string[] => {
   return str
-    .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
-    .split(/[\s\-_]+/)
+    .replace(CAMEL_BOUNDARY, "$1 $2")
+    .replace(ACRONYM_BOUNDARY, "$1 $2")
+    .split(SEPARATOR)
     .filter(Boolean)
     .map((w) => w.toLowerCase());
 };

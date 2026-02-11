@@ -1,3 +1,5 @@
+const BYTE_SIZES = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"] as const;
+
 /**
  * Formats a byte count into a human-readable string.
  *
@@ -17,11 +19,10 @@ export const formatBytes = (bytes: number, decimals = 2): string => {
 
   const k = 1024;
   const dm = Math.max(0, decimals);
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
   const i = Math.floor(Math.log(Math.abs(bytes)) / Math.log(k));
   const value = bytes / k ** i;
 
-  return `${Number.parseFloat(value.toFixed(dm))} ${sizes[i]}`;
+  return `${Number.parseFloat(value.toFixed(dm))} ${BYTE_SIZES[i]}`;
 };
 
 /**

@@ -1,3 +1,5 @@
+import { isObject } from "../is/guards.js";
+
 /**
  * Creates a new object with only the specified keys.
  *
@@ -35,20 +37,17 @@ export const omit = <T extends Record<string, unknown>, K extends keyof T>(
   obj: T,
   keys: K[],
 ): Omit<T, K> => {
-  const result = { ...obj };
-  for (const key of keys) {
-    delete result[key];
+  const exclude = new Set<PropertyKey>(keys);
+  const result = {} as Record<string, unknown>;
+  for (const key of Object.keys(obj)) {
+    if (!exclude.has(key)) {
+      result[key] = obj[key];
+    }
   }
   return result as Omit<T, K>;
 };
 
 const UNSAFE_KEYS = new Set(["__proto__", "constructor", "prototype"]);
-
-const isPlainObject = (value: unknown): value is Record<string, unknown> => {
-  if (typeof value !== "object" || value === null) return false;
-  const proto = Object.getPrototypeOf(value);
-  return proto === Object.prototype || proto === null;
-};
 
 /**
  * Deep merges multiple source objects into a target object.
@@ -69,7 +68,7 @@ export const merge = <T extends Record<string, unknown>>(target: T, ...sources: 
       if (UNSAFE_KEYS.has(key)) continue;
       const targetVal = result[key];
       const sourceVal = source[key];
-      if (isPlainObject(targetVal) && isPlainObject(sourceVal)) {
+      if (isObject(targetVal) && isObject(sourceVal)) {
         result[key] = merge(
           targetVal as Record<string, unknown>,
           sourceVal as Record<string, unknown>,
