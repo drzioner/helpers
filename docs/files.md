@@ -14,12 +14,12 @@ randomFileName('file.jpg', 8, '.png');
 // "164782829087589b6a0c9d92d12b2.png"
 ```
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `originalName` | `string` | -- | Original file name (extension is extracted) |
-| `length` | `number` | `32` | Number of random bytes for the hash |
-| `extension` | `string` | -- | Override the file extension |
-| `encoding` | `BufferEncoding` | `"hex"` | Encoding for the random bytes |
+| Parameter      | Type             | Default | Description                                 |
+|----------------|------------------|---------|---------------------------------------------|
+| `originalName` | `string`         | --      | Original file name (extension is extracted) |
+| `length`       | `number`         | `32`    | Number of random bytes for the hash         |
+| `extension`    | `string`         | --      | Override the file extension                 |
+| `encoding`     | `BufferEncoding` | `"hex"` | Encoding for the random bytes               |
 
 > **Migration:** `nameFileRandom` is deprecated. Use `randomFileName` instead.
 
@@ -37,8 +37,8 @@ await createFile('../../etc/passwd', 'data');
 // throws Error: Path traversal detected
 ```
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `file` | `string` | -- | File name or relative path within base directory |
-| `data` | `string \| Uint8Array` | -- | Content to write |
-| `path` | `string` | `process.cwd()` | Base directory |
+| Parameter | Type                   | Default         | Description                                      |
+|-----------|------------------------|-----------------|--------------------------------------------------|
+| `file`    | `string`               | --              | File name or relative path within base directory |
+| `data`    | `string \| Uint8Array` | --              | Content to write                                 |
+| `path`    | `string`               | `process.cwd()` | Base directory                                   |

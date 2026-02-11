@@ -2,7 +2,8 @@
 
 ### generateUID
 
-Generates a unique identifier string with a timestamp prefix and cryptographically random hex bytes. Format: `xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxxx`
+Generates a unique identifier string with a timestamp prefix and cryptographically random hex bytes. Format:
+`xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxx-xxxxxxxxx`
 
 ```typescript
 import { generateUID } from '@drzioner/helpers';
