@@ -8,4 +8,5 @@ export default defineConfig({
   outDir: 'dist',
   splitting: false,
   sourcemap: true,
+  treeshake: true,
 });
