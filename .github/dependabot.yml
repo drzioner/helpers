@@ -20,6 +20,9 @@ updates:
           - "typescript"
           - "publint"
           - "@arethetypeswrong/*"
+          - "@types/node"
+          - "rimraf"
+          - "simple-git-hooks"
         update-types:
           - "minor"
           - "patch"
