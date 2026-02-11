@@ -13,10 +13,10 @@ padNumber(1, 5, 'z');    // "zzzz1"
 padNumber(12345, 3);     // "12345" (no truncation)
 ```
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `value` | `number` | -- | The number to pad |
-| `length` | `number` | `4` | Total length of the resulting string |
-| `fill` | `string` | `"0"` | Character to pad with |
+| Parameter | Type     | Default | Description                          |
+|-----------|----------|---------|--------------------------------------|
+| `value`   | `number` | --      | The number to pad                    |
+| `length`  | `number` | `4`     | Total length of the resulting string |
+| `fill`    | `string` | `"0"`   | Character to pad with                |
 
 > **Migration:** `fillANumberWithCharacters` is deprecated. Use `padNumber` instead.

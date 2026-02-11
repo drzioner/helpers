@@ -6,6 +6,8 @@ export type ArithmeticOperationType = "sum" | "subtraction" | "division" | "mult
 /**
  * Enum of arithmetic operation names for type-safe usage.
  *
+ * @deprecated Will be removed in v1.0.0. Use string literals instead.
+ *
  * @example
  * arithmeticOperations([1, 2, 3], ArithmeticOperations.SUM) // 6
  */

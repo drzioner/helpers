@@ -44,7 +44,8 @@ manipulateDays(4, '2022-04-09');
 ```
 
 Available manipulators (each with a UTC variant):
-`manipulateYears`, `manipulateMonths`, `manipulateDays`, `manipulateHours`, `manipulateMinutes`, `manipulateSeconds`, `manipulateMilliseconds`
+`manipulateYears`, `manipulateMonths`, `manipulateDays`, `manipulateHours`, `manipulateMinutes`, `manipulateSeconds`,
+`manipulateMilliseconds`
 
 ### Get date components
 

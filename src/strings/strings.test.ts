@@ -67,8 +67,19 @@ describe("padNumber", () => {
   });
 
   it("should handle negative numbers", () => {
-    // padStart pads the string representation including the minus sign
-    expect(padNumber(-1, 5)).toBe("000-1");
+    expect(padNumber(-1, 5)).toBe("-0001");
+  });
+
+  it("should handle negative numbers with default length", () => {
+    expect(padNumber(-1)).toBe("-001");
+  });
+
+  it("should handle negative numbers with custom fill", () => {
+    expect(padNumber(-42, 6, " ")).toBe("-   42");
+  });
+
+  it("should handle negative number that exceeds length", () => {
+    expect(padNumber(-12345, 3)).toBe("-12345");
   });
 
   it("should pad with dash character", () => {

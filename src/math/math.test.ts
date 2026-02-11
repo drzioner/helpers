@@ -244,12 +244,12 @@ describe("arithmeticOperations", () => {
       expect(arithmeticOperations([], "subtraction")).toBe(0);
     });
 
-    it("should return 0 for multiplication with empty array", () => {
-      expect(arithmeticOperations([], "multiplication")).toBe(0);
+    it("should return 1 for multiplication with empty array", () => {
+      expect(arithmeticOperations([], "multiplication")).toBe(1);
     });
 
-    it("should return 0 for division with empty array", () => {
-      expect(arithmeticOperations([], "division")).toBe(0);
+    it("should return 1 for division with empty array", () => {
+      expect(arithmeticOperations([], "division")).toBe(1);
     });
   });
 });
