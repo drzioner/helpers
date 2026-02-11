@@ -8,6 +8,10 @@ updates:
       day: "monday"
     open-pull-requests-limit: 10
     versioning-strategy: increase
+    reviewers:
+      - "drzioner"
+    commit-message:
+      prefix: "chore(deps)"
     labels:
       - "dependencies"
     groups:
@@ -39,6 +43,10 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 5
+    reviewers:
+      - "drzioner"
+    commit-message:
+      prefix: "chore(deps)"
     labels:
       - "dependencies"
       - "github-actions"
