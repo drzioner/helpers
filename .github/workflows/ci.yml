@@ -3,8 +3,14 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "*.md"
+      - "docs/**"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "*.md"
+      - "docs/**"
 
 permissions:
   contents: read
@@ -34,7 +40,12 @@ jobs:
       - uses: ./.github/actions/setup
         with:
           node-version: ${{ matrix.node-version }}
-      - run: pnpm test:coverage
+      - name: Run tests with coverage
+        if: matrix.node-version == 24
+        run: pnpm test:coverage
+      - name: Run tests
+        if: matrix.node-version != 24
+        run: pnpm test
       - name: Upload coverage
         if: matrix.node-version == 24
         uses: actions/upload-artifact@v6

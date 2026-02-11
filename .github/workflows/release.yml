@@ -24,9 +24,6 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: pnpm validate
 
-      - name: Ensure npm >= 11.5.1 for trusted publishing
-        run: npm install -g npm@latest
-
       - name: Create Release PR
         id: changesets
         uses: changesets/action@v1
@@ -36,6 +33,10 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Ensure npm >= 11.5.1 for trusted publishing
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: npm install -g npm@latest
 
       - name: Publish to npm
         if: steps.changesets.outputs.hasChangesets == 'false'
