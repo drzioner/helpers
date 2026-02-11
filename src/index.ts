@@ -1,3 +1,19 @@
+// array
+export {
+  chunk,
+  compact,
+  difference,
+  first,
+  groupBy,
+  intersection,
+  last,
+  range,
+  shuffle,
+  unique,
+  uniqueBy,
+} from "./array/operations.js";
+export type { Falsy, KeySelector } from "./array/types.js";
+
 // database
 export { generateUID } from "./database/generate-uid.js";
 
@@ -64,7 +80,22 @@ export { CustomFormat, FormatDate, FormatTime } from "./dates/types.js";
 export { createFile } from "./files/create-file.js";
 export { nameFileRandom, randomFileName } from "./files/random-file-name.js";
 
-// math
+// is
+export {
+  isArray,
+  isBoolean,
+  isDate,
+  isEmpty,
+  isFunction,
+  isNullish,
+  isNumber,
+  isObject,
+  isRegExp,
+  isString,
+} from "./is/guards.js";
+export type { PlainObject } from "./is/types.js";
+
+// math (deprecated — will be removed in v1.0.0)
 export {
   arithmeticOperations,
   division,
@@ -75,6 +106,24 @@ export {
 export type { ArithmeticOperationType } from "./math/types.js";
 export { ArithmeticOperations } from "./math/types.js";
 
-// strings
+// number
+export { formatBytes, ordinal } from "./number/formatters.js";
+export { average, clamp, inRange, randomInt, round, sumAll } from "./number/operations.js";
+
+// object
+export { get, has, merge, omit, pick } from "./object/operations.js";
+export type { AnyObject } from "./object/types.js";
+
+// string
+export { escapeHtml, slugify, truncate, unescapeHtml } from "./string/operations.js";
+export {
+  camelCase,
+  capitalize,
+  kebabCase,
+  pascalCase,
+  snakeCase,
+  splitWords,
+} from "./string/transforms.js";
+
+// strings (deprecated — use number module for padNumber)
 export { fillANumberWithCharacters, padNumber } from "./strings/pad.js";
-export type { PadNumberOptions } from "./strings/types.js";

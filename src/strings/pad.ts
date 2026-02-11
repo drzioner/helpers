@@ -13,10 +13,15 @@
  * padNumber(12345, 3)  // "12345" (no truncation)
  */
 export const padNumber = (value: number, length = 4, fill = "0"): string => {
+  if (value < 0) {
+    return `-${Math.abs(value)
+      .toString()
+      .padStart(length - 1, fill)}`;
+  }
   return value.toString().padStart(length, fill);
 };
 
 /**
- * @deprecated Use `padNumber` instead. Will be removed in v2.0.0.
+ * @deprecated Use `padNumber` from the `number` module instead. Will be removed in v1.0.0.
  */
 export const fillANumberWithCharacters = padNumber;
