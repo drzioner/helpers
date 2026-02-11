@@ -4,7 +4,7 @@ Thank you for your interest in contributing. This guide explains how to set up t
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 18
+- [Node.js](https://nodejs.org/) >= 20
 - [pnpm](https://pnpm.io/) >= 10
 
 ## Setup
@@ -19,10 +19,15 @@ pnpm install
 
 ```
 src/
+  array/         # Array utilities (unique, groupBy, chunk, shuffle, difference, ...)
   database/      # UID generation
   dates/         # Date parsing, formatting, getters, manipulators, difference
   files/         # File creation, random file names
+  is/            # Type guards (isString, isNumber, isObject, isEmpty, ...)
   math/          # Arithmetic operations
+  number/        # Numeric operations (clamp, round, randomInt, formatBytes, ...)
+  object/        # Object helpers (pick, omit, merge, get, has)
+  string/        # String transforms (camelCase, slugify, escapeHtml, truncate, ...)
   strings/       # String padding utilities
   index.ts       # Barrel re-exports
 ```
@@ -91,7 +96,7 @@ Choose the semver bump type:
 
 ### 6. Submit a pull request
 
-Push your branch and open a PR against `main`. The CI pipeline runs lint, tests (Node 18/20/22), build, and package validation.
+Push your branch and open a PR against `main`. The CI pipeline runs lint, typecheck, tests (Node 20/22/24), build, and package validation. All status checks must pass before merging.
 
 ## Code Conventions
 
