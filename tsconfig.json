@@ -2,14 +2,13 @@
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "src/**/*.test.ts"],
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext",
+    "strict": true,
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "outDir": "dist",
     "declaration": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

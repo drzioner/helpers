@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    branches: [main, next]
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    if: github.repository == 'drzioner/helpers'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup
+        with:
+          registry-url: https://registry.npmjs.org
+      - run: pnpm validate
+
+      - name: Ensure npm >= 11.5.1 for trusted publishing
+        run: npm install -g npm@latest
+
+      - name: Create Release PR
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm version
+          title: "chore: version packages"
+          commit: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: pnpm release
+        env:
+          NPM_CONFIG_PROVENANCE: true
+
+      - name: Create GitHub Release
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: |
+          TAG=$(git tag --points-at HEAD | head -1)
+          if [ -n "$TAG" ]; then
+            git push origin "$TAG"
+            gh release create "$TAG" --generate-notes
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

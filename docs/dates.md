@@ -1,100 +1,60 @@
-## Date helpers
+## Dates
 
-Difference dates
-```bash
-import { dateDifference } from '@drzioner/helpers';
+### Date difference
 
-const diff = dateDifference('2021-04-09', '2021-04-01');
+```typescript
+import { dateDifference, differenceTodayAndAnotherDate } from '@drzioner/helpers';
 
-console.log('diff', diff);
+dateDifference('2021-04-09', '2021-04-01');                 // 691200000 (raw ms)
+dateDifference('2021-04-09', '2021-04-01', 'days');         // 8
+dateDifference('2021-04-09', '2021-04-01', 'milliseconds'); // 691200000
 
-# diff 691200000
-
-const diff = dateDifference('2021-04-09', '2021-04-01', 'days');
-
-console.log('diff', diff);
-
-# diff 8
-
-import { differenceTodayAndAnotherDate } from '@drzioner/helpers';
-
-const diff = differenceTodayAndAnotherDate('2022-04-08');
-
-console.log('diff', diff);
-
-# diff 160556129
-
-const diff = differenceTodayAndAnotherDate('2021-04-08', 'months');
-
-console.log('diff', diff);
-
-# diff 12
-```
-Format dates
-```bash
-import { formatDate } from '@drzioner/helpers';
-
-const date = formatDate('iso', '2021-04-08');
-
-console.log('date', date);
-
-# date 2021-04-08T00:00:00.000Z
-
-const date = formatDate('locale');
-
-console.log('date', date);
-
-# date 9/4/2022, 3:40:09 p. m.
-
-import { CustomFormat, formatDate } from '@drzioner/helpers';
-
-const date = formatDate('custom', new Date(), CustomFormat.DD_MM_YYYY_HH_MM_SSZ);
-
-console.log('date', date);
-
-# date 09-04-2022 15:42:03.931
-
-```
-Manipulate dates
-```bash
-import { manipulateDate } from '@drzioner/helpers';
-
-const date = manipulateDate({ days: -1, months: 1 }, '2022-04-09');
-
-console.log('date', date);
-
-# date 2022-05-08T00:00:00.000Z
-
-import { manipulateDays } from '@drzioner/helpers';
-
-const date = manipulateDays(4, '2022-04-09');
-
-console.log('date', date);
-
-# date 2022-04-13T00:00:00.000Z
+differenceTodayAndAnotherDate('2021-04-08', 'months');      // varies
 ```
 
-Get dates
-```bash
-import { getDate } from '@drzioner/helpers';
+Supported units: `milliseconds`, `seconds`, `minutes`, `hours`, `days`, `months`, `years`.
 
-const date = getDate();
+### Format dates
 
-console.log('date', date);
+```typescript
+import { formatDate, CustomFormat } from '@drzioner/helpers';
 
-# date 2022-04-09T20:54:14.850Z
+formatDate('iso', '2021-04-08');
+// "2021-04-08T00:00:00.000Z"
 
-const date = getDate('2022-04-05');
+formatDate('locale');
+// "9/4/2022, 3:40:09 p. m." (varies by locale)
 
-console.log('date', date);
-
-# date 2022-04-05T00:00:00.000Z
-
-import { getHours } from '@drzioner/helpers';
-
-const date = getHours();
-
-console.log('date', date);
-
-# date 15
+formatDate('custom', new Date(), CustomFormat.DD_MM_YYYY_HH_MM_SSZ);
+// "09-04-2022 15:42:03.931"
 ```
+
+Format types: `iso`, `utc`, `date`, `time`, `locale`, `locale-time`, `custom`.
+
+### Manipulate dates
+
+```typescript
+import { manipulateDate, manipulateDays } from '@drzioner/helpers';
+
+manipulateDate({ days: -1, months: 1 }, '2022-04-09');
+// 2022-05-08T00:00:00.000Z
+
+manipulateDays(4, '2022-04-09');
+// 2022-04-13T00:00:00.000Z
+```
+
+Available manipulators (each with a UTC variant):
+`manipulateYears`, `manipulateMonths`, `manipulateDays`, `manipulateHours`, `manipulateMinutes`, `manipulateSeconds`, `manipulateMilliseconds`
+
+### Get date components
+
+```typescript
+import { getDate, getHours, getYear } from '@drzioner/helpers';
+
+getDate();              // current Date object
+getDate('2022-04-05');  // 2022-04-05T00:00:00.000Z
+getHours();             // current hour (0-23)
+getYear('2022-04-05');  // 2022
+```
+
+Every getter has a UTC variant (e.g., `getHoursUTC`, `getYearUTC`).

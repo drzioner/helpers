@@ -1,84 +1,149 @@
-# Helpers
+# @drzioner/helpers
 
-### Collection of various helpers for javascript and typescript development
+[![CI](https://github.com/drzioner/helpers/actions/workflows/ci.yml/badge.svg)](https://github.com/drzioner/helpers/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@drzioner/helpers.svg)](https://www.npmjs.com/package/@drzioner/helpers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
+Zero-dependency TypeScript utility library for dates, math, files, and strings.
+
+## Requirements
+
+- Node.js >= 18
 
 ## Installation
 
 ```bash
-npm i @drzioner/helpers
+pnpm add @drzioner/helpers
 # or
-yarn add @drzioner/helpers
+npm install @drzioner/helpers
 ```
 
-## [Database helpers](./docs/database.md)
+## Modules
 
-Example
+### [Database](./docs/database.md)
 
-```bash
+```typescript
 import { generateUID } from '@drzioner/helpers';
 
 const uid = generateUID();
-
-console.log('uid', uid);
-
-# uid 16478271-33403a97-d811b91d-345c8543-334d9a74-5044d5a47
+// "16478271-33403a97-d811b91d-345c8543-334d9a74-5044d5a47"
 ```
 
-## [Date helpers](./docs/dates.md)
+### [Dates](./docs/dates.md)
 
-Example
-```bash
-import { manipulateDate } from '@drzioner/helpers';
+```typescript
+import { manipulateDate, dateDifference, formatDate, CustomFormat } from '@drzioner/helpers';
 
 const date = manipulateDate({ days: -1, months: 1 }, '2022-04-09');
-
-console.log('date', date);
-
-# date 2022-05-08T00:00:00.000Z
-
-import { dateDifference } from '@drzioner/helpers';
+// 2022-05-08T00:00:00.000Z
 
 const diff = dateDifference('2021-04-09', '2021-04-01', 'days');
+// 8
 
-console.log('diff', diff);
-
-# diff 8
+const formatted = formatDate('custom', new Date(), CustomFormat.YYYY_MM_DD);
+// "2024-06-15"
 ```
 
-## [File helpers](./docs/files.md)
+### [Files](./docs/files.md)
 
-Example
+```typescript
+import { randomFileName, createFile } from '@drzioner/helpers';
+
+const name = randomFileName('photo.jpg');
+// "1647828249206a64bdc57f939d47eae0...jpg"
+
+await createFile('data.json', '{"key": "value"}', './output');
+```
+
+### [Math](./docs/math.md)
+
+```typescript
+import { arithmeticOperations, sum } from '@drzioner/helpers';
+
+arithmeticOperations([2, 1, 4, 3], 'sum'); // 10
+sum(3, 4);                                  // 7
+```
+
+### [Strings](./docs/strings.md)
+
+```typescript
+import { padNumber } from '@drzioner/helpers';
+
+padNumber(1);            // "0001"
+padNumber(1, 2);         // "01"
+padNumber(1, 5, 'z');    // "zzzz1"
+```
+
+## API Reference
+
+### Database
+
+| Function | Description |
+|----------|-------------|
+| `generateUID()` | Generate a unique identifier string |
+
+### Dates
+
+| Function | Description |
+|----------|-------------|
+| `dateDifference(first, second, unit?)` | Absolute difference between two dates |
+| `differenceTodayAndAnotherDate(date, unit?)` | Difference between today and a date |
+| `formatDate(type, date?, format?)` | Format a date as string |
+| `getDate(date?)` | Parse to `Date` object |
+| `getYear(date?)` / `getYearUTC(date?)` | Get year (local/UTC) |
+| `getMonth(date?)` / `getMonthUTC(date?)` | Get month (local/UTC) |
+| `getDay(date?)` / `getDayUTC(date?)` | Get day (local/UTC) |
+| `getHours(date?)` / `getHoursUTC(date?)` | Get hours (local/UTC) |
+| `getMinutes(date?)` / `getMinutesUTC(date?)` | Get minutes (local/UTC) |
+| `getSeconds(date?)` / `getSecondsUTC(date?)` | Get seconds (local/UTC) |
+| `getMilliseconds(date?)` / `getMillisecondsUTC(date?)` | Get milliseconds (local/UTC) |
+| `manipulateDate(options, date?)` | Modify multiple date components at once |
+| `manipulateYears(value, date?)` | Add/subtract years (local) |
+| `manipulateMonths(value, date?)` | Add/subtract months (local) |
+| `manipulateDays(value, date?)` | Add/subtract days (local) |
+| `manipulateHours(value, date?)` | Add/subtract hours (local) |
+| `manipulateMinutes(value, date?)` | Add/subtract minutes (local) |
+| `manipulateSeconds(value, date?)` | Add/subtract seconds (local) |
+| `manipulateMilliseconds(value, date?)` | Add/subtract milliseconds (local) |
+
+UTC variants exist for all manipulators (`manipulateYearsUTC`, etc.).
+
+### Files
+
+| Function | Description |
+|----------|-------------|
+| `randomFileName(originalName, length?, extension?, encoding?)` | Generate unique file name |
+| `createFile(file, data, path?)` | Write file with path traversal protection |
+
+### Math
+
+| Function | Description |
+|----------|-------------|
+| `arithmeticOperations(values, operation)` | Reduce array with arithmetic operation |
+| `sum(a, b)` | Add two numbers |
+| `subtraction(a, b)` | Subtract second from first |
+| `multiplication(a, b)` | Multiply two numbers |
+| `division(a, b)` | Divide first by second |
+
+### Strings
+
+| Function | Description |
+|----------|-------------|
+| `padNumber(value, length?, fill?)` | Pad a number with fill characters |
+
+## Development
+
 ```bash
-import { nameFileRandom } from '@drzioner/helpers';
-
-const nameRandom = nameFileRandom('file.jpg');
-
-console.log('nameRandom', nameRandom);
-
-# nameRandom 1647828249206a64bdc57f939d47eae0be8dfab854314b8b5d6fc01b6449acd8787c06075e4ec.jpg
+pnpm test              # Run tests
+pnpm test:coverage     # Tests with coverage
+pnpm build             # Build ESM + CJS
+pnpm lint              # Lint with Biome
+pnpm typecheck         # TypeScript type checking
+pnpm validate          # Build + publint + attw
 ```
 
-## [Mathematics helpers](./docs/mathematics.md)
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full development guide.
 
-Arithmetic operations
-```bash
-import { ArithmeticOperations } from '@drzioner/helpers';
-const result = arithmeticOperations([2, 1, 4, 3], 'sum');
+## License
 
-console.log('result', result);
-
-# result 10
-```
-
-## [Uncategorized helpers](./docs/uncategorized.md)
-
-Fill in a number with a character
-```bash
-import { fillANumberWithCharacters } from '@drzioner/helpers';
-
-const number = fillANumberWithCharacters(1);
-
-console.log('number', number);
-
-# number 0001
-```
+[MIT](./LICENSE)
