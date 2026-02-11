@@ -1,0 +1,51 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    labels:
+      - "dependencies"
+    groups:
+      dev-tools:
+        patterns:
+          - "@biomejs/*"
+          - "@vitest/*"
+          - "vitest"
+          - "tsup"
+          - "typescript"
+          - "publint"
+          - "@arethetypeswrong/*"
+          - "@types/node"
+          - "rimraf"
+          - "simple-git-hooks"
+        update-types:
+          - "minor"
+          - "patch"
+      changesets:
+        patterns:
+          - "@changesets/*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    groups:
+      actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
