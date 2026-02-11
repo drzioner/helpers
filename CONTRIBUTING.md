@@ -19,15 +19,15 @@ pnpm install
 
 ```
 src/
-  is/            # Type guards (isString, isNumber, isObject, isEmpty, ...)
-  number/        # Numeric operations (clamp, round, randomInt, formatBytes, ...)
-  string/        # String transforms (camelCase, slugify, escapeHtml, truncate, ...)
   array/         # Array utilities (unique, groupBy, chunk, shuffle, difference, ...)
-  object/        # Object helpers (pick, omit, merge, get, has)
   database/      # UID generation
   dates/         # Date parsing, formatting, getters, manipulators, difference
   files/         # File creation, random file names
+  is/            # Type guards (isString, isNumber, isObject, isEmpty, ...)
   math/          # Arithmetic operations
+  number/        # Numeric operations (clamp, round, randomInt, formatBytes, ...)
+  object/        # Object helpers (pick, omit, merge, get, has)
+  string/        # String transforms (camelCase, slugify, escapeHtml, truncate, ...)
   strings/       # String padding utilities
   index.ts       # Barrel re-exports
 ```
