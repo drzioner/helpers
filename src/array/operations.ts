@@ -99,7 +99,7 @@ export const shuffle = <T>(array: T[]): T[] => {
 /**
  * Generates an array of numbers in a range.
  *
- * @remarks For integer steps only. Decimal steps may exhibit minor floating-point rounding.
+ * @remarks Decimal steps work for values representable in binary (0.25, 0.5, etc.). Steps like 0.1 may exhibit minor floating-point rounding due to IEEE 754.
  *
  * @param start - The start value (inclusive)
  * @param end - The end value (exclusive)

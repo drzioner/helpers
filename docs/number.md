@@ -20,7 +20,7 @@ clamp(5, 0, 10);    // 5
 
 ### round
 
-Rounds a number to a specified number of decimal places. Uses `Number.EPSILON` correction to handle edge cases like `1.005`.
+Rounds a number to a specified number of decimal places. Uses exponential notation to handle edge cases like `1.005` and `1.255`.
 
 ```typescript
 import { round } from '@drzioner/helpers';
@@ -88,14 +88,14 @@ sumAll([-1, 1]);        // 0
 
 ### average
 
-Calculates the arithmetic mean of an array of numbers. Returns `0` for an empty array (not `NaN`).
+Calculates the arithmetic mean of an array of numbers. Returns `NaN` for an empty array.
 
 ```typescript
 import { average } from '@drzioner/helpers';
 
 average([1, 2, 3, 4]);  // 2.5
 average([10]);           // 10
-average([]);             // 0
+average([]);             // NaN
 ```
 
 | Parameter | Type       | Description   |

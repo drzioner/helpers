@@ -17,14 +17,14 @@ isString(null);        // false
 
 ### isNumber
 
-Checks if a value is a number. Excludes `NaN` but includes `Infinity` and `-Infinity`.
+Checks if a value is a finite number. Excludes `NaN`, `Infinity`, and `-Infinity`.
 
 ```typescript
 import { isNumber } from '@drzioner/helpers';
 
 isNumber(42);         // true
 isNumber(3.14);       // true
-isNumber(Infinity);   // true
+isNumber(Infinity);   // false
 isNumber(NaN);        // false
 isNumber("42");       // false
 ```
